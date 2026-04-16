@@ -13,8 +13,8 @@ type BuildRowsFn = (
 const filledLine: LineFn = (width, char = "*") => char.repeat(width);
 
 const hollowLine: LineFn = (width, char = "*") => {
-  // if (width <= 1) return char;
-  // if (width === 2) return char + char;
+  if (width <= 1) return char;
+  if (width === 2) return char + char;
   return char + " ".repeat(width - 2) + char;
 };
 
