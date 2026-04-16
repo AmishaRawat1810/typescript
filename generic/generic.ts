@@ -1,8 +1,6 @@
-type Fn<X, Y> = (...args: X[]) => Y;
-
 export const compose =
   <B, C>(f: (arg: B) => C, g: (...args: any[]) => B) =>
-  <T>(...args: T[]) =>
+  (...args: any[]) =>
     f(g(...args));
 
 export const juxt =
@@ -31,14 +29,14 @@ export const pairWith =
   (x: X) => [x, f(x)];
 
 export const tap =
-  <X, Y>(f: (arg: X) => X) =>
+  <X, Y>(f: (arg: X) => Y) =>
   (x: X) => {
     f(x);
     return x;
   };
 
 export const zipWith = <A, B, C>(f: (a: A, b: B) => C, a1: A[], a2: B[]) =>
-  a1.map((x, i) => f(x, a2[i]));
+  a1.map((x: A, i: number) => f(x, a2[i]));
 
 export const prop =
   (key: string) =>
