@@ -1,5 +1,12 @@
-import { CharSymbol, RectangleFn } from "./types.ts";
-import { alternateLine, buildRows, filledLine, hollowLine } from "./utils.ts";
+import { generatePattern } from "./pattern.ts";
+import { CharSymbol, Dimension, RectangleFn } from "./types.ts";
+import {
+  alternateLine,
+  buildRows,
+  filledLine,
+  hollowLine,
+  spacedAlternateLine,
+} from "./utils.ts";
 
 export const filledRectangle: RectangleFn = (
   row,
@@ -29,3 +36,24 @@ export const alternativeRectangle: RectangleFn = (
   Array.from({ length: row }, (_, index) =>
     alternateLine(index, col, char),
   ).join(CharSymbol.NewLine);
+
+export const spacedAlternateRectangle: RectangleFn = (row, col) =>
+  Array.from({ length: row }, (_, index) =>
+    spacedAlternateLine(index, col),
+  ).join(CharSymbol.NewLine);
+
+export const triangle = (row: Dimension): string => {
+  let currentCol = 0;
+  let pattern = "";
+
+  const build = (): string => {
+    if (currentCol > row) {
+      return pattern;
+    }
+
+    pattern += filledLine(currentCol++) + CharSymbol.NewLine;
+    return build();
+  };
+
+  return build();
+};

@@ -2,6 +2,7 @@ import {
   alternateLineFn,
   BuildRowsFn,
   CharSymbol,
+  Dimension,
   LineFn,
   PositiveNumber,
 } from "./types.ts";
@@ -20,8 +21,14 @@ export const hollowLine: LineFn = (width, char = CharSymbol.Star) => {
 export const alternateLine: alternateLineFn = (rowNumber, width, char) =>
   (rowNumber % 2 === 0 ? filledLine : hollowLine)(width, char);
 
-// export const spacedAlternateLine = (rowNumber, width, char) => {
-// };
+export const spacedAlternateLine = (
+  rowNumber: number,
+  width: Dimension,
+) => {
+  const index = Math.floor(rowNumber % 3);
+  const symbols = Object.values(CharSymbol);
+  return filledLine(width, symbols[index]);
+};
 
 export const buildRows: BuildRowsFn = (
   row,

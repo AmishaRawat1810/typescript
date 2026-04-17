@@ -1,7 +1,7 @@
 export enum CharSymbol {
-  Space = " ",
   Star = "*",
   Dash = "-",
+  Space = " ",
   NewLine = "\n",
   Empty = "",
 }
@@ -11,6 +11,7 @@ export enum Style {
   HollowRectangle = "hollowRectangle",
   AlternativeRectangle = "alternativeRectangle",
   SpacedAlterativeRectangle = "spacedAlterativeRectangle",
+  Triangle = "triangle",
 }
 
 export type Char = string;
@@ -27,7 +28,7 @@ export type RectangleFn = (
 ) => string;
 export type generatePatternFn = (
   style: string,
-  dimension: [number, number],
+  dimension: [number, number?],
 ) => string;
 
 export type BuildRowsFn = (

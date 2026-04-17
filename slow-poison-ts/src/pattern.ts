@@ -2,12 +2,15 @@ import {
   alternativeRectangle,
   filledRectangle,
   hollowRectangle,
+  spacedAlternateRectangle,
+  triangle,
 } from "./handlers.ts";
 import { CharSymbol, generatePatternFn, Style } from "./types.ts";
 import { isPositive, separator } from "./utils.ts";
 
 export const generatePattern: generatePatternFn = (style, dimension) => {
-  const [col, row] = dimension;
+  const row = dimension[0];
+  const col = dimension[1] || row;
 
   if (!isPositive(col) || !isPositive(row)) {
     return CharSymbol.Empty;
@@ -25,6 +28,14 @@ export const generatePattern: generatePatternFn = (style, dimension) => {
     case Style.AlternativeRectangle: {
       separator();
       return alternativeRectangle(row, col);
+    }
+    case Style.SpacedAlterativeRectangle: {
+      separator();
+      return spacedAlternateRectangle(row, col);
+    }
+    case Style.Triangle: {
+      separator();
+      return triangle(row);
     }
   }
 
