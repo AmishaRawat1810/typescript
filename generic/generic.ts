@@ -40,7 +40,7 @@ export const zipWith = <A, B, C>(f: (a: A, b: B) => C, a1: A[], a2: B[]) =>
 
 export const prop =
   (key: string) =>
-  <X>(obj: { [key: string]: X }) =>
+  <X>(obj: Record<string, X>) =>
     obj[key];
 
 export const wrap =

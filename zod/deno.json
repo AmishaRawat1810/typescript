@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "basic": "deno run --watch basic.ts"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1",
+    "@zod/zod": "jsr:@zod/zod@^4.3.6"
+  }
+}
